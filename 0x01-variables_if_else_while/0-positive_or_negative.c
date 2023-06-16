@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-
 /**
- * main - A program that runs a conditional statement
- * Return: 0 (success) 
+ * main -Entry point
+ * Description: 'Check for number if it is positie or negatie'
+ * Return: always 0
  */
 int main(void)
 {
@@ -13,8 +13,7 @@ int main(void)
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	if (n > 0)
-	{
-		printf("%d is positive\n", n);
+	{	printf("%d is positive\n", n);
 	}
 	else if (n == 0)
 	{
