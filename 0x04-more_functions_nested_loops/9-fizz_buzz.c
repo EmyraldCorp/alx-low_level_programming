@@ -1,5 +1,5 @@
 #include <stdio.h>
-include "main.h"
+#include "main.h"
 /**
  * main - Entry point
  *
@@ -16,7 +16,7 @@ int main(void)
 	for (i = 1; i <= 100; i++)
 	{
 		if (i % 15 == 0)
-			pritnf("FizzBuzz");
+			printf("FizzBuzz");
 		else if (i % 3 == 0)
 			printf("Fizz");
 		else if (i % 5 == 0)
@@ -26,6 +26,6 @@ int main(void)
 		if (i < 100)
 			printf(" ");
 	}
-	printf("\n")
+	printf("\n");
 	return (0);
 }
