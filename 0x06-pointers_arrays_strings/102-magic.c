@@ -1,9 +1,4 @@
 #include <stdio.h>
-/**
- * main - add number
- *
- * Return: Always 0
- */
 
 int main(void)
 {
