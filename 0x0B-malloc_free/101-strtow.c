@@ -1,38 +1,91 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
+
+int word_len(char *str);
+int count_words(char *str);
+char **strtow(char *str);
 
 /**
- * print_tab - prints ggg
- * @tab: the arra
+ * word_len - ..
+ *
+ * @str: ..
  *
  * Return: 0
  */
-void print_tab(char **tab)
+int word_len(char *str)
 {
-	int i;
+	int index = 0, len = 0;
 
-	for (i = 0; tab[i] != NULL; ++i)
+	while (*(str + index) && *(str + index) != ' ')
 	{
-		printf("%s\n", tab[i]);
+		len++;
+		index++;
 	}
+	return (len);
 }
 
 /**
- * main - check the code
+ * count_words - ...
+ * @str: ...
  *
  * Return: 0
  */
-int main(void)
+int count_words(char *str)
 {
-	char **tab;
+	int index = 0, words = 0, len = 0;
 
-	tab = strtow("		ALX School		#cisfun		");
-	if (tab == NULL)
+	for (index = 0; *(str + index); index++)
+		len++;
+	for (index = 0; index < len; index++)
 	{
-		printf("Failed\n");
-		return (1);
+		if (*(str + index) != ' ')
+		{
+			words++;
+			index += word_len(str + index);
+		}
 	}
-	print_tab(tab);
-	return (0);
+	return (words);
+}
+
+/**
+ * strtow - ...
+ * @str: ...
+ *
+ * Return: ...
+ */
+char **strtow(char *str)
+{
+	char **strings;
+	int index = 0, words, w, letters, l;
+
+	if (str == NULL || str[0] == '\0')
+		return (NULL);
+	words = count_words(str);
+	if (words == 0)
+		return (NULL);
+	strings = malloc(sizeof(char *) * (words + 1));
+	if (strings == NULL)
+		return (NULL);
+
+	for (w = 0; w < words; w++)
+	{
+		while (str[index] == ' ')
+			index++;
+		letters = word_len(str + index);
+
+		strings[w] = malloc(sizeof(char) * (letters + 1));
+
+		if (strings[w] == NULL)
+		{
+			for (; w >= 0; w--)
+				free(strings[w]);
+			free(strings);
+			return (NULL);
+		}
+		for (l = 0; l < letters; l++)
+			strings[w][l] = str[index++];
+		strings[w][l] = '\0';
+	}
+	strings[w] = NULL;
+	return (strings);
 }
