@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 	if (nout == NULL)
 		printf("Error\n"), exit(98);
 
-	nout =_initialize_array(nout, lnout);
+	nout = _initialize_array(nout, lnout);
 
 	k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
 
